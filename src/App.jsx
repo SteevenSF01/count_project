@@ -44,10 +44,15 @@ function App() {
   function reset() {
     setCount(0);
   }
+  function clearAll(){
+      localStorage.removeItem('count')
+      localStorage.removeItem('pronostiques')
+      window.location.reload()
+      }
 
   return (
     <>
-      <div className="h-fit flex gap-4 flex-col">
+      <div className="h-fit w-full flex gap-4 flex-col items-center">
         {open ?
           <div>
             <Formulaire
@@ -60,27 +65,30 @@ function App() {
           </div>
           :
           <>
-            <div className="flex gap-4 justify-start flex-wrap">
+            <div className="flex gap-4 justify-start flex-wrap mt-5">
               <Pronostique data={pronostiqueData} />
             </div>
-            <button onClick={() => setOpen(!open)} className="bg-gray-400 text-white py-2 rounded-xl">Ajouter un pronostique</button>
+            <div className="flex justify-center gap-2 xl:gap-5 max-w-[400px] flex-wrap lg:flex-nowrap">
+                <button onClick={() => setOpen(!open)} className="bg-gray-400 text-sm xl:text-normal text-white py-2 rounded-xl px-5 xl:w-52">Ajouter un pronostique</button>
+                <button onClick={()=> clearAll()} className="bg-gray-400 text-sm xl:text-normal text-white py-2 rounded-xl w-20 xl:w-52">Clear</button>
+            </div>
           </>
         }
       </div>
       <div className='flex justify-center items-center h-[92vh] flex-col'>
-        <h1 className='text-3xl mb-5 font-serif font-semibold'>Count Descentes</h1>
-        <div>
-          <div className='bg-gray-400 text-white py-5 rounded-xl text-center'>
+        <h1 className='text-xl xl:text-3xl mb-5 font-normal'>Count Descentes</h1>
+        <div className='w-[250px] xl:w-[400px]'>
+          <div className='bg-gray-400 text-white py-2 xl:py-3 rounded-xl text-center text-sm xl:text-normal'>
             Total : {count}
           </div>
-          <div className='mt-5 flex gap-x-5'>
-            <button className='bg-gray-400 text-white px-10 py-4 rounded-xl' onClick={supprimer}>
+          <div className='mt-2 xl:mt-3 flex justify-between w-full flex-wrap'>
+            <button className='bg-gray-400 text-white px-3 xl:px-10 py-2 xl:py-3 w-[30%] rounded-xl' onClick={supprimer}>
               -
             </button>
-            <button className='bg-gray-400 text-white px-10 py-4 rounded-xl' onClick={reset}>
+            <button className='bg-gray-400 text-white px-3 xl:px-10 py-2 xl:py-3 w-[30%] rounded-xl text-sm xl:text-normal' onClick={reset}>
               Reset
             </button>
-            <button className='bg-gray-400 text-white px-10 py-4 rounded-xl' onClick={ajouter}>
+            <button className='bg-gray-400 text-white px-3 xl:px-10 py-2 xl:py-3 w-[30%] rounded-xl' onClick={ajouter}>
               +
             </button>
           </div>

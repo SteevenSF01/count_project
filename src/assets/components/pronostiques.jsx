@@ -13,7 +13,7 @@ export default function Pronostique(props) {
                 </div>
                    ) })
                 ) : (
-                    <p className="w-full text-center text-2xl font-serif font-semibold">Pas de pronostique</p>
+                    <p className="w-full text-center text-xl xl:text-3xl font-normal">Pas de pronostique</p>
                 )}
             </>
         );
